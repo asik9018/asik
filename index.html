@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Web Analytics Expert – Portfolio</title>
+  <meta name="description" content="Professional portfolio of a Web Analytics expert: GA4, GTM, Looker Studio, BigQuery, CRO & tagging." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b0f14;            /* dark blue-gray */
+      --bg-2: #111723;          /* slightly lighter */
+      --card: #141c27;
+      --muted: #9bb0c8;
+      --text: #e6eef8;
+      --brand: #5b9dff;
+      --brand-2: #7be0d2;
+      --ok: #34d399;            /* green */
+      --warn: #fbbf24;          /* amber */
+      --danger: #f87171;        /* red */
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 16px;
+      --radius-lg: 24px;
+      --maxw: 1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:linear-gradient(160deg,var(--bg),var(--bg-2));color:var(--text);font-family:'Inter',system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+    header.nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: saturate(120%) blur(8px);
+      background:rgba(11,15,20,.6);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800;letter-spacing:.3px}
+    .brand .logo{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand-2));display:grid;place-items:center;box-shadow:var(--shadow);}
+    .brand .logo span{font-weight:900;color:#0b0f14}
+    .nav a{margin:0 10px;padding:8px 12px;border-radius:10px}
+    .cta{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#0b0f14;font-weight:700;box-shadow:var(--shadow)}
+    .cta:hover{filter:brightness(1.05)}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:14px;background:#1a2432;color:var(--text);border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
+    .btn:hover{transform:translateY(-1px)}
+
+    /* Hero */
+    .hero{padding:80px 0 40px;border-bottom:1px solid rgba(255,255,255,.06)}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+    .kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);background:#111826;border:1px solid rgba(255,255,255,.08);padding:6px 10px;border-radius:999px}
+    h1{font-size:44px;line-height:1.1;margin:14px 0 10px}
+    .lead{font-size:18px;color:#cfe1fa}
+    .hero-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);padding:18px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px;font-size:16px}
+    .stat{font-size:28px;font-weight:800}
+    .avatar{width:210px;height:210px;border-radius:24px;background:linear-gradient(180deg,#1d293a,#0f1722);border:1px solid rgba(255,255,255,.1);box-shadow:var(--shadow);display:grid;place-items:center;overflow:hidden}
+    .avatar img{width:100%;height:100%;object-fit:cover}
+
+    /* Sections */
+    section{padding:64px 0}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:22px}
+    .section-head h2{margin:0;font-size:30px}
+    .sub{color:var(--muted);font-size:14px}
+
+    .grid{display:grid;gap:16px}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-4{grid-template-columns:repeat(4,1fr)}
+
+    /* Tools */
+    .tool{padding:16px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);background:#0e1520}
+    .tool small{display:block;color:var(--muted)}
+
+    /* Case Studies */
+    .case{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);background:#0e1520}
+    .pill{display:inline-flex;gap:8px;align-items:center;background:rgba(91,157,255,.1);color:#bcd9ff;padding:4px 10px;border-radius:999px;font-size:12px;border:1px solid rgba(91,157,255,.35)}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+    .metric{padding:12px;border-radius:12px;background:#111a27;border:1px solid rgba(255,255,255,.07)}
+    .metric b{display:block;font-size:18px}
+
+    /* Services */
+    .service{padding:18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);background:#0e1520}
+    .price{font-weight:800;font-size:22px}
+
+    /* Testimonials */
+    .testi{padding:18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);background:#0e1520;font-style:italic}
+
+    /* Resume & Contact */
+    .resume{display:flex;flex-direction:column;gap:10px}
+    .contact-card{padding:18px;border-radius:var(--radius);border:1px solid rgba(255,255,255,.08);background:#0e1520}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    input,textarea{width:100%;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);background:#0c121b;color:var(--text)}
+    textarea{min-height:120px;resize:vertical}
+
+    footer{padding:40px 0;border-top:1px solid rgba(255,255,255,.06);color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-grid{grid-template-columns:1fr}
+      .hero-cards{grid-template-columns:1fr 1fr}
+      .grid.cols-4{grid-template-columns:repeat(2,1fr)}
+      .grid.cols-3{grid-template-columns:repeat(2,1fr)}
+      .grid.cols-2{grid-template-columns:1fr}
+      .contact-grid{grid-template-columns:1fr}
+    }
+    @media (max-width:600px){
+      h1{font-size:34px}
+      .hero{padding-top:56px}
+      .hero-cards{grid-template-columns:1fr}
+    }
+  </style>
+  <!--
+    ✅ Optional: Add Google Tag Manager
+    Replace GTM-XXXXXXX below with your container ID and remove the surrounding comment marks.
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-XXXXXXX');</script>
+  -->
+</head>
+<body>
+  <!-- Optional: GTM noscript
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXXXXX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+
+  <header class="nav">
+    <div class="container nav-wrap">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"><span>WA</span></div>
+        <div>
+          <div>YOUR NAME</div>
+          <small style="color:var(--muted)">Web Analytics Expert</small>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#work">Case Studies</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="kicker">GA4 · GTM · Looker Studio · BigQuery</span>
+        <h1>আমি একজন <span style="background:linear-gradient(135deg,var(--brand),var(--brand-2));-webkit-background-clip:text;background-clip:text;color:transparent">Web Analytics</span> এক্সপার্ট</h1>
+        <p class="lead">Measurement strategy, end‑to‑end tagging, consent & governance, dashboarding এবং CRO—সবকিছু একজায়গায়। Data‑driven সিদ্ধান্তে আপনার growth ত্বরান্বিত করি।</p>
+        <div style="display:flex;gap:10px;margin-top:14px">
+          <a class="btn" href="#contact">Free Consultation</a>
+          <a class="btn" href="#work">See Case Studies</a>
+        </div>
+        <div class="hero-cards">
+          <div class="card"><h3>Avg. Lift</h3><div class="stat">+38%</div><small class="sub">Conversion rate (3 mo.)</small></div>
+          <div class="card"><h3>Trust</h3><div class="stat">50+</div><small class="sub">Deployments (GA4/GTM)</small></div>
+          <div class="card"><h3>SLA</h3><div class="stat">24h</div><small class="sub">Critical tag fixes</small></div>
+        </div>
+      </div>
+      <div style="display:grid;place-items:center">
+        <div class="avatar">
+          <!-- Replace with your photo -->
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1080&auto=format&fit=crop" alt="Your portrait"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tools">
+    <div class="container">
+      <div class="section-head">
+        <h2>Tools & Expertise</h2>
+        <div class="sub">Tagging · Consent · Reporting · Data Warehousing</div>
+      </div>
+      <div class="grid cols-4">
+        <div class="tool"><b>Google Analytics 4</b><small>Enhanced measurement, ecommerce, audiences</small></div>
+        <div class="tool"><b>Google Tag Manager</b><small>DataLayer design, server‑side tagging</small></div>
+        <div class="tool"><b>Looker Studio</b><small>Executive dashboards, anomaly alerts</small></div>
+        <div class="tool"><b>BigQuery</b><small>Export, SQL modeling, activation</small></div>
+        <div class="tool"><b>Consent (GTM/CM)</b><small>Consent mode v2, region mapping</small></div>
+        <div class="tool"><b>Meta/Ads Pixels</b><small>CAPI, deduplication, attribution</small></div>
+        <div class="tool"><b>GTM Server‑Side</b><small>Security, data quality, performance</small></div>
+        <div class="tool"><b>AB Testing/CRO</b><small>Hypothesis, instrumentation, readout</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+      <div class="section-head">
+        <h2>Case Studies</h2>
+        <div class="sub">Selected work that moved the needle</div>
+      </div>
+      <div class="grid cols-3">
+        <article class="case">
+          <span class="pill">🚀 SaaS · GA4 + BQ</span>
+          <h3>Trial‑to‑Paid ↑ 27%</h3>
+          <p>Product usage events modeled in BigQuery → audience sync to Ads. Cohort dashboards revealed drop‑off at onboarding step 2; fix drove uplift.</p>
+          <div class="metrics">
+            <div class="metric"><small>Lift</small><b>+27%</b></div>
+            <div class="metric"><small>Time</small><b>6 weeks</b></div>
+            <div class="metric"><small>Scope</small><b>GA4, BQ, LS</b></div>
+          </div>
+        </article>
+        <article class="case">
+          <span class="pill">🛍️ Ecommerce · sGTM</span>
+          <h3>ROAS ↑ 1.6×</h3>
+          <p>Server‑side tagging with CAPI/GAds improved match rates and reduced ad‑block losses; revenue attribution stabilized across channels.</p>
+          <div class="metrics">
+            <div class="metric"><small>ROAS</small><b>1.6×</b></div>
+            <div class="metric"><small>Latency</small><b>−32%</b></div>
+            <div class="metric"><small>Scope</small><b>GTM, CAPI</b></div>
+          </div>
+        </article>
+        <article class="case">
+          <span class="pill">🏥 Healthcare · Consent</span>
+          <h3>Compliance‑first Analytics</h3>
+          <p>Consent Mode v2 with regional rules; PI/PHI safe events; transparent banner reduced bounce while satisfying regulators.</p>
+          <div class="metrics">
+            <div class="metric"><small>Consent</small><b>98%</b></div>
+            <div class="metric"><small>Risk</small><b>↓</b></div>
+            <div class="metric"><small>Scope</small><b>GTM, CMP</b></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>Services</h2>
+        <div class="sub">Simple, outcome‑focused packages</div>
+      </div>
+      <div class="grid cols-3">
+        <div class="service">
+          <h3>Starter Audit</h3>
+          <p>GA4 property review, data quality audit, quick‑wins & roadmap.</p>
+          <div class="price">$299</div>
+          <ul>
+            <li>90‑min discovery</li>
+            <li>GA4 health report</li>
+            <li>Dash template</li>
+          </ul>
+        </div>
+        <div class="service">
+          <h3>Implementation</h3>
+          <p>End‑to‑end GTM/GA4 setup with ecommerce & consent.</p>
+          <div class="price">$1,499</div>
+          <ul>
+            <li>Tracking plan + DL</li>
+            <li>GTM (web/server)</li>
+            <li>Looker dashboard</li>
+          </ul>
+        </div>
+        <div class="service">
+          <h3>Growth & CRO</h3>
+          <p>Experimentation program and attribution alignment.</p>
+          <div class="price">$999/mo</div>
+          <ul>
+            <li>Weekly insights</li>
+            <li>AB testing</li>
+            <li>Media alignment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <div class="section-head">
+        <h2>About Me</h2>
+        <div class="sub">Your data teammate</div>
+      </div>
+      <div class="grid cols-2">
+        <div class="card">
+          <h3>Bio</h3>
+          <p>আমি <b>YOUR NAME</b> — ৫+ বছরের অভিজ্ঞতা সম্পন্ন Web Analytics স্পেশালিস্ট। DTC, SaaS, এবং মার্কেটপ্লেস—বিভিন্ন ডোমেইনে কাজ করেছি। ডেটা ইন্টিগ্রিটি, গোপনীয়তা ও ব্যবসায়িক ফল—এই তিনটিতেই সমান ফোকাস।</p>
+          <ul>
+            <li>🏆 GA4 Certified • Google Partner (if applicable)</li>
+            <li>🧰 Favorite stack: GA4, GTM (sGTM), BigQuery, Looker Studio</li>
+            <li>🌍 Remote‑friendly, Dhaka‑based</li>
+          </ul>
+        </div>
+        <div class="card resume">
+          <h3>Resume</h3>
+          <p>নিচের বাটনে ক্লিক করে PDF ডাউনলোড করুন।</p>
+          <a class="btn" href="resume.pdf" download>Download Resume (PDF)</a>
+          <small class="sub">Tip: এই ফাইলটি আপনার রেপোজিটরিতে <code>resume.pdf</code> নামে আপলোড করুন।</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contact</h2>
+        <div class="sub">Let’s talk measurement</div>
+      </div>
+      <div class="grid cols-2">
+        <div class="contact-card">
+          <form action="mailto:youremail@example.com" method="post" enctype="text/plain">
+            <div class="contact-grid">
+              <div>
+                <label for="name">Your Name</label>
+                <input id="name" name="name" placeholder="Type your name" required>
+              </div>
+              <div>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+              </div>
+            </div>
+            <div style="margin-top:10px">
+              <label for="msg">Message</label>
+              <textarea id="msg" name="message" placeholder="Tell me about your goals…" required></textarea>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+              <button class="btn" type="submit">Send</button>
+              <small class="sub">Or email: <a href="mailto:youremail@example.com">youremail@example.com</a></small>
+            </div>
+          </form>
+        </div>
+        <div class="card">
+          <h3>Why clients hire me</h3>
+          <ul>
+            <li>Clean tracking plan & documented DataLayer</li>
+            <li>Governance: consent‑aware, privacy‑first setup</li>
+            <li>Dashboards that answer business questions</li>
+            <li>Fast response on critical issues</li>
+          </ul>
+          <h3>Availability</h3>
+          <p>Taking 2 new projects this month. <a href="#contact">Book a slot</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div>© <span id="y"></span> YOUR NAME</div>
+      <div>
+        <a href="#">LinkedIn</a> ·
+        <a href="#">GitHub</a> ·
+        <a href="#">Looker Gallery</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Set current year in footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+
+  <!-- ✅ Optional: Add Google Analytics 4 (gtag.js)
+  Replace G-XXXXXXX with your GA4 Measurement ID and remove the surrounding comment marks.
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
+    gtag('config', 'G-XXXXXXX');
+  </script>
+  -->
+</body>
+</html>
